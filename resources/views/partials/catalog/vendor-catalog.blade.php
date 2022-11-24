@@ -160,7 +160,7 @@
                                                     <ins>{{ App\Models\Product::whereId($prod['id'])->first()->showPrice() }}</ins>
                                                     <del>{{ App\Models\Product::whereId($prod['id'])->first()->showPreviousPrice() }}</del>
                                                 </div>
-                                                <div class="on-sale"><span>{{ round(App\Models\Product::whereId($prod['id'])->first()->offPercentage())}}</span><span>% off</span></div>
+                                                {{-- <div class="on-sale"><span>{{ round(App\Models\Product::whereId($prod['id'])->first()->offPercentage())}}</span><span>% off</span></div> --}}
                                             </div>
                                             <div class="shipping-feed-back">
                                                 <div class="star-rating">

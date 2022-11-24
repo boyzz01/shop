@@ -9,9 +9,9 @@
              @endforeach
           </div>
           @endif
-          @if (round($prod->offPercentage() )>0)
+          {{-- @if (round($prod->offPercentage() )>0)
           <div class="on-sale">- {{ round($prod->offPercentage() )}}%</div>
-          @endif
+          @endif --}}
 
           <div class="hover-area">
             @if($prod->product_type == "affiliate")

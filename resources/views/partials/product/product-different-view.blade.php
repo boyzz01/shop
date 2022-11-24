@@ -7,9 +7,9 @@
          <div class="product-wrapper">
             <div class="product-image">
                <a href="{{ route('front.product', $product->slug) }}" class="woocommerce-LoopProduct-link"><img class="lazy" data-src="{{ $product->photo ? asset('assets/images/products/'.$product->photo):asset('assets/images/noimage.png') }}" alt="Product Image"></a>
-               @if (round($product->offPercentage() )>0)
+               {{-- @if (round($product->offPercentage() )>0)
                     <div class="on-sale">- {{ round($product->offPercentage() )}}%</div>
-               @endif
+               @endif --}}
                <div class="hover-area">
                   @if($product->product_type == "affiliate")
                   <div class="cart-button buynow">
@@ -74,9 +74,9 @@
          <div class="product-wrapper">
             <div class="product-image">
                <a href="{{ route('front.product', $product->slug) }}" class="woocommerce-LoopProduct-link"><img class="lazy" data-src="{{ $product->photo ? asset('assets/images/products/'.$product->photo):asset('assets/images/noimage.png') }}" alt="Product Image"></a>
-               @if (round($product->offPercentage() )>0)
+               {{-- @if (round($product->offPercentage() )>0)
                <div class="on-sale">- {{ round($product->offPercentage() )}}%</div>
-               @endif
+               @endif --}}
                <div class="hover-area">
                 @if($product->product_type == "affiliate")
                 <div class="cart-button buynow">
@@ -145,9 +145,9 @@
          <div class="product-wrapper">
             <div class="product-image">
                <a href="{{ route('front.product', $product->slug) }}" class="woocommerce-LoopProduct-link"><img class="lazy" data-src="{{ $product->photo ? asset('assets/images/products/'.$product->photo):asset('assets/images/noimage.png') }}" alt="Product Image"></a>
-               @if (round($product->offPercentage() )>0)
+               {{-- @if (round($product->offPercentage() )>0)
                     <div class="on-sale">- {{ round($product->offPercentage() )}}%</div>
-               @endif
+               @endif --}}
                <div class="hover-area">
                   @if($product->product_type == "affiliate")
                   <div class="cart-button">
