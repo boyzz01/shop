@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Helpers\PriceHelper;
 use App\Models\Slider;
 use Illuminate\Http\Request;
 use Validator;
@@ -59,7 +60,7 @@ class SliderController extends AdminBaseController
         $data = new Slider();
         $input = $request->all();
         if ($file = $request->file('photo')) {
-            $name = \PriceHelper::ImageCreateName($file);
+            $name = PriceHelper::ImageCreateName($file);
             $file->move('assets/images/sliders', $name);
             $input['photo'] = $name;
         }
@@ -98,7 +99,7 @@ class SliderController extends AdminBaseController
         $data = Slider::findOrFail($id);
         $input = $request->all();
         if ($file = $request->file('photo')) {
-            $name = \PriceHelper::ImageCreateName($file);
+            $name = PriceHelper::ImageCreateName($file);
             $file->move(public_path('assets/images/sliders'), $name);
             if ($data->photo != null) {
                 if (file_exists(public_path() . '/assets/images/sliders/' . $data->photo)) {
