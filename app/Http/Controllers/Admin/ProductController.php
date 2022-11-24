@@ -241,7 +241,8 @@ class ProductController extends AdminBaseController
         $path = 'assets/images/products/' . $image_name;
         file_put_contents($path, $image);
         $input['photo'] = $image_name;
-
+        $msg = __("New Product Added Successfully.") . '<a href="' . route('admin-prod-index') . '">' . __("View Product Lists.") . '</a>';
+        return response()->json($msg);
         // Check Physical
         if ($request->type == "Physical") {
             //--- Validation Section
