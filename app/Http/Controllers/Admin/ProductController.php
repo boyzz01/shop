@@ -238,11 +238,10 @@ class ProductController extends AdminBaseController
         list(, $image)      = explode(',', $image);
         $image = base64_decode($image);
         $image_name = time() . Str::random(8) . '.png';
-        $path = 'assets/images/products/' . $image_name;
-        $image->move(public_path('assets/images/sliders'), $image_name);
+        $path = public_path() . '/assets/images/products/' . $image_name;
+        echo $image;
         // file_put_contents($path, $image);
         $input['photo'] = $image_name;
-
 
         // Check Physical
         if ($request->type == "Physical") {
