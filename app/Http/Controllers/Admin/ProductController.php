@@ -239,8 +239,8 @@ class ProductController extends AdminBaseController
         $image = base64_decode($image);
         $image_name = time() . Str::random(8) . '.png';
         $path = public_path() . '/assets/images/products/' . $image_name;
-        echo $image;
-        // file_put_contents($path, $image);
+        //echo $image;
+        echo file_put_contents($path, $image);
         $input['photo'] = $image_name;
 
         // Check Physical
