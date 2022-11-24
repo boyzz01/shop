@@ -142,7 +142,7 @@
         <!--==================== Top Collection Section End ====================-->
 @endif
 <!--==================== Service Section Start ====================-->
-@if ($ps->partner==1)
+{{-- @if ($ps->partner==1)
 <div class="full-row bg-light">
     <div class="container">
         <div class="row justify-content-center">
@@ -165,7 +165,7 @@
     </div>
 </div>
 
-@endif
+@endif --}}
 
 <!--==================== Service Section End ====================-->
 
