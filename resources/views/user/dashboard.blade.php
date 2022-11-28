@@ -61,7 +61,7 @@
                      </div>
                   </div>
                </div>
-               <div class="col-lg-6">
+               {{-- <div class="col-lg-6">
                   <div class="widget border-0 p-30 widget_categories bg-light account-info">
                      <h4 class="widget-title down-line mb-30">{{ __('My Wallet') }}</h4>
                      <div class="user-info">
@@ -73,7 +73,7 @@
                         <a href="{{ route('user-deposit-create') }}" class="mybtn1 sm "> <i class="fas fa-plus"></i> {{ __('Add Deposit') }}</a>
                      </div>
                   </div>
-               </div>
+               </div> --}}
             </div>
             {{-- Statistic section --}}
             <div class="row mt-3">

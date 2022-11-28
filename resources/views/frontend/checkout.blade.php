@@ -111,7 +111,7 @@
                                     <div class="col-lg-6 {{ $digital == 1 ? 'd-none' : '' }}">
                                        <select class="form-control" id="shipop" name="shipping" required="">
                                           <option value="shipto">{{ __('Ship To Address') }}</option>
-                                          <option value="pickup">{{ __('Pick Up') }}</option>
+                                          {{-- <option value="pickup">{{ __('Pick Up') }}</option> --}}
                                        </select>
                                     </div>
                                     <div class="col-lg-6 mb-2 d-none" id="shipshow">
@@ -388,6 +388,8 @@
                                           </a>
                                           @endif
                                           @endforeach
+
+                                          Bank ABC Rekening 123456
                                        </div>
                                     </div>
                                     <div class="col-lg-12">
@@ -470,7 +472,7 @@
                   <ul class="order-list">
                      <li>
                         <p>
-                           {{ __('Total MRP') }}
+                           {{ __('Total Harga Produk') }}
                         </p>
                         <P>
                            <b
@@ -539,7 +541,7 @@
                   </div>
                   @if($digital == 0)
                   {{-- Shipping Method Area Start --}}
-                  <div class="packeging-area">
+                  {{-- <div class="packeging-area">
                      <h4 class="title">{{ __('Shipping Method') }}</h4>
                      @foreach($shipping_data as $data)
                      <div class="radio-design">
@@ -554,10 +556,10 @@
                         </label>
                      </div>
                      @endforeach
-                  </div>
+                  </div> --}}
                   {{-- Shipping Method Area End --}}
                   {{-- Packeging Area Start --}}
-                  <div class="packeging-area">
+                  {{-- <div class="packeging-area">
                      <h4 class="title">{{ __('Packaging') }}</h4>
                      @foreach($package_data as $data)
                      <div class="radio-design">
@@ -572,7 +574,7 @@
                         </label>
                      </div>
                      @endforeach
-                  </div>
+                  </div> --}}
                   {{-- Packeging Area End Start--}}
                   {{-- Final Price Area Start--}}
                   <div class="final-price">
@@ -1285,36 +1287,7 @@
    		$($('#v-pills-tabContent #'+$(this).attr('aria-controls'))).addClass('active show').load($(this).attr('data-href'));
    	})
 
-           $(document).on('submit','#step1-form',function(){
-           	$('#preloader').hide();
-               var val = $('#sub').val();
-               var total = $('#grandtotal').val();
-   			total = Math.round(total);
-                   if(val == 0)
-                   {
-                   var handler = PaystackPop.setup({
-                     key: '{{$paystack['key']}}',
-                     email: $('input[name=customer_email]').val(),
-                     amount: total * 100,
-                     currency: "{{$curr->name}}",
-                     ref: ''+Math.floor((Math.random() * 1000000000) + 1),
-                     callback: function(response){
-                       $('#ref_id').val(response.reference);
-                       $('#sub').val('1');
-                       $('#final-btn').click();
-                     },
-                     onClose: function(){
-                     	window.location.reload();
-                     }
-                   });
-                   handler.openIframe();
-                       return false;
-                   }
-                   else {
-                   	$('#preloader').show();
-                       return true;
-                   }
-           });
+       
 
 
    // Step 2 btn DONE

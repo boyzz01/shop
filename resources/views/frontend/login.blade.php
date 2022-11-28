@@ -78,7 +78,7 @@
                                             <input id="authdata" type="hidden" value="{{ __('Authenticating...') }}">
 
                                             <button type="submit" class="woocommerce-form-login__submit btn btn-primary border-0 rounded-0 submit-btn float-none w-100" name="login" value="Log in">{{ __('Log in') }}</button>
-                                            @if($socialsetting->f_check == 1 || $socialsetting->g_check == 1)
+                                            {{-- @if($socialsetting->f_check == 1 || $socialsetting->g_check == 1)
                                                     <div class="social-area text-center">
                                                         <h3 class="title  mt-3">{{ ('OR') }}</h3>
                                                         <p class="text">{{ __('Sign In with social media') }}</p>
@@ -99,7 +99,7 @@
                                                             @endif
                                                         </ul>
                                                     </div>
-					              @endif
+					              @endif --}}
                                         </form>
                                     </div>
                                 </div>

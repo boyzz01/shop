@@ -34,7 +34,7 @@
         </ul>
     </li> --}}
 
-
+{{-- 
 
 <li>
     <a href="#income" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>{{ __('Total Earning') }}</a>
@@ -55,7 +55,7 @@
         </li>
 
     </ul>
-</li>
+</li> --}}
 
 
     <li>
@@ -226,7 +226,7 @@
         <a href="{{ route('admin-subscription-index') }}" class=" wave-effect"><i class="fas fa-dollar-sign"></i>{{ __('Vendor Subscription Plans') }}</a>
     </li> --}}
 
-    <li>
+    {{-- <li>
         <a href="#msg" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-fw fa-newspaper"></i>{{ __('Messages') }}
         </a>
@@ -238,7 +238,7 @@
                 <a href="{{ route('admin-message-dispute') }}"><span>{{ __('Disputes') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a href="#blog" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -362,7 +362,7 @@
         </ul>
     </li>
 
-    <li>
+    {{-- <li>
         <a href="#payments" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-file-code"></i>{{ __('Payment Settings') }}
         </a>
@@ -372,7 +372,7 @@
             <li><a href="{{route('admin-currency-index')}}"><span>{{ __('Currencies') }}</span></a></li>
             <li><a href="{{route('admin-reward-index')}}"><span>{{__('Reward Information')}}</span></a></li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
         <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -380,8 +380,8 @@
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
                 <li><a href="{{route('admin-sociallink-index')}}"><span>{{ __('Social Links') }}</span></a></li>
-                <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
-                <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li>
+                {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
+                <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li> --}}
         </ul>
     </li>
 
@@ -400,7 +400,7 @@
         <a href="{{ route('admin.fonts.index') }}" class=" wave-effect"><i class="fa fa-font"></i>{{ __('Font Option') }}</a>
     </li>
 
-    <li>
+    {{-- <li>
         <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-wrench"></i>{{ __('SEO Tools') }}
         </a>
@@ -415,20 +415,20 @@
                 <a href="{{ route('admin-seotool-keywords') }}"><span>{{ __('Website Meta Keywords') }}</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
-    <li>
+    {{-- <li>
         <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>
     </li>
 
     <li>
         <a href="{{ route('admin-subs-index') }}" class=" wave-effect"><i class="fas fa-users-cog mr-2"></i>{{ __('Subscribers') }}</a>
-    </li>
+    </li> --}}
 
 
-    <li>
+    {{-- <li>
         <a href="{{ route('admin-role-index') }}" class=" wave-effect"><i class="fas fa-user-tag"></i>{{ __('Manage Roles') }}</a>
-    </li>
+    </li> --}}
 
     {{-- <li>
         <a href="{{ route('admin-cache-clear') }}" class=" wave-effect"><i class="fas fa-sync"></i>{{ __('Clear Cache') }}</a>
@@ -437,7 +437,7 @@
     <li>
         <a href="{{ route('admin-addon-index') }}" class=" wave-effect"><i class="fas fa-list-alt"></i>{{ __('Addon Manager') }}</a>
     </li> --}}
-
+{{-- 
     <li>
         <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-cog"></i>{{ __('System Activation') }}
@@ -447,4 +447,4 @@
             <li><a href="{{route('admin-activation-form')}}"> {{ __('Activation') }}</a></li>
             <li><a href="{{route('admin-generate-backup')}}"> {{ __('Generate Backup') }}</a></li>
         </ul>
-    </li>
+    </li> --}}

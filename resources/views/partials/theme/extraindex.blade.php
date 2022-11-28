@@ -186,7 +186,8 @@
 
                  <div class="products product-style-1 owl-mx-15">
                     <div class="four-carousel owl-carousel dot-disable nav-arrow-middle-show e-title-general e-title-hover-primary e-image-bg-light  e-info-center e-title-general e-title-hover-primary e-image-bg-light e-hover-image-zoom e-info-center">
-                    @foreach($best_products as $prod)
+                        {{ count($best_products) }}
+                         @foreach($best_products as $prod)
                         <div class="item">
                             @include('partials.product.home-product')
                         </div>

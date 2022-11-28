@@ -354,7 +354,7 @@
 
 
 
-
+{{-- 
     <div class="row row-cards-one">
 
         <div class="col-md-12 col-sm-12 col-lg-6 col-xl-6">
@@ -381,7 +381,7 @@
                     </div>
         </div>
         
-    </div>
+    </div> --}}
 
 
 
