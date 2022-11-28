@@ -1,20 +1,20 @@
     <li>
-        <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>{{ __('Orders') }}</a>
+        <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>Pesanan</a>
         <ul class="collapse list-unstyled" id="order" data-parent="#accordion" >
             <li>
-                <a href="{{ route('admin-orders-all') }}"> {{ __('All Orders') }}</a>
+                <a href="{{ route('admin-orders-all') }}">Semua Pesanan</a>
             </li>
             <li>
-                <a href="{{ route('admin-orders-all') }}?status=pending"> {{ __('Pending Orders') }}</a>
+                <a href="{{ route('admin-orders-all') }}?status=pending"> Pesanan Tertunda</a>
             </li>
             <li>
-                <a href="{{ route('admin-orders-all') }}?status=processing"> {{ __('Processing Orders') }}</a>
+                <a href="{{ route('admin-orders-all') }}?status=processing"> Pesanan Diproses</a>
             </li>
             <li>
-                <a href="{{ route('admin-orders-all') }}?status=completed"> {{ __('Completed Orders') }}</a>
+                <a href="{{ route('admin-orders-all') }}?status=completed"> Pesanan Selesai</a>
             </li>
             <li>
-                <a href="{{ route('admin-orders-all') }}?status=declined"> {{ __('Declined Orders') }}</a>
+                <a href="{{ route('admin-orders-all') }}?status=declined"> Pesanan Ditolak</a>
             </li>
 
         </ul>
@@ -59,7 +59,7 @@
 
 
     <li>
-            <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-sitemap"></i>{{ __('Manage Categories') }}</a>
+            <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-sitemap"></i>Atur Kategori</a>
             <ul class="collapse list-unstyled
             @if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category')
               show
@@ -69,37 +69,37 @@
               show
             @endif" id="menu5" data-parent="#accordion" >
                     <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category') active @endif">
-                        <a href="{{ route('admin-cat-index') }}"><span>{{ __('Main Category') }}</span></a>
+                        <a href="{{ route('admin-cat-index') }}"><span>Kategori Utama</span></a>
                     </li>
                     <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory') active @endif">
-                        <a href="{{ route('admin-subcat-index') }}"><span>{{ __('Sub Category') }}</span></a>
+                        <a href="{{ route('admin-subcat-index') }}"><span>Sub Kategori </span></a>
                     </li>
                     <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory') active @endif">
-                        <a href="{{ route('admin-childcat-index') }}"><span>{{ __('Child Category') }}</span></a>
+                        <a href="{{ route('admin-childcat-index') }}"><span>Kategori turunan</span></a>
                     </li>
             </ul>
     </li>
 
     <li>
         <a href="#menu2" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="icofont-cart"></i>{{ __('Products') }}
+            <i class="icofont-cart"></i>Produk
         </a>
         <ul class="collapse list-unstyled" id="menu2" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-prod-types') }}"><span>{{ __('Add New Product') }}</span></a>
+                <a href="{{ route('admin-prod-types') }}"><span>Tambah Produk</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-prod-index') }}"><span>{{ __('All Products') }}</span></a>
+                <a href="{{ route('admin-prod-index') }}"><span>Semua Produk</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-prod-deactive') }}"><span>{{ __('Deactivated Product') }}</span></a>
+                <a href="{{ route('admin-prod-deactive') }}"><span>Non Aktifkan Produk</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-prod-catalog-index') }}"><span>{{ __('Product Catalogs') }}</span></a>
+                <a href="{{ route('admin-prod-catalog-index') }}"><span>Katalog Produk</span></a>
             </li>
 
             <li>
-                <a href="{{ route('admin-gs-prod-settings') }}"><span>{{ __('Product Settings') }}</span></a>
+                <a href="{{ route('admin-gs-prod-settings') }}"><span>Pengaturan Produk</span></a>
             </li>
         </ul>
     </li>
@@ -119,28 +119,28 @@
     </li> --}}
 
     <li>
-        <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>{{ __('Bulk Product Upload') }}</a>
+        <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>Upload Produk Massal</a>
     </li>
 
     <li>
         <a href="#menu4" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="icofont-speech-comments"></i>{{ __('Product Discussion') }}
+            <i class="icofont-speech-comments"></i>Diskusi Produk
         </a>
         <ul class="collapse list-unstyled" id="menu4" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-rating-index') }}"><span>{{ __('Product Reviews') }}</span></a>
+                <a href="{{ route('admin-rating-index') }}"><span>Review Produk</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-comment-index') }}"><span>{{ __('Comments') }}</span></a>
+                <a href="{{ route('admin-comment-index') }}"><span>Komentar</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-report-index') }}"><span>{{ __('Reports') }}</span></a>
+                <a href="{{ route('admin-report-index') }}"><span>Laporan</span></a>
             </li>
         </ul>
     </li>
 
     <li>
-        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>{{ __('Set Coupons') }}</a>
+        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>Kupon Diskon</a>
     </li>
 
     {{-- <li>
@@ -246,20 +246,20 @@
         </a>
         <ul class="collapse list-unstyled" id="blog" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-cblog-index') }}"><span>{{ __('Categories') }}</span></a>
+                <a href="{{ route('admin-cblog-index') }}"><span>Kategori</span></a>
             </li>
             <li>
                 <a href="{{ route('admin-blog-index') }}"><span>{{ __('Posts') }}</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-gs-blog-settings') }}"><span>{{ __('Blog Settings') }}</span></a>
+                <a href="{{ route('admin-gs-blog-settings') }}"><span>Pengaturan Berita</span></a>
             </li>
         </ul>
     </li>
 
     <li>
         <a href="#general" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-cogs"></i>{{ __('General Settings') }}
+            <i class="fas fa-cogs"></i>Pengaturan Utama
         </a>
         <ul class="collapse list-unstyled" id="general" data-parent="#accordion">
             <li>
@@ -272,16 +272,16 @@
                 <a href="{{ route('admin-gs-load') }}"><span>{{ __('Loader') }}</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-shipping-index') }}"><span>{{ __('Shipping Methods') }}</span></a>
+                <a href="{{ route('admin-shipping-index') }}"><span>Metode Pengiriman</span></a>
             </li>
             <li>
-                <a href="{{ route('admin-package-index') }}"><span>{{ __('Packagings') }}</span></a>
+                <a href="{{ route('admin-package-index') }}"><span>Pengemasan</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-pick-index') }}"><span>{{ __('Pickup Locations') }}</span></a>
-            </li>
+            </li> --}}
             <li>
-                <a href="{{ route('admin-gs-contents') }}"><span>{{ __('Website Contents') }}</span></a>
+                <a href="{{ route('admin-gs-contents') }}"><span>Konten Website</span></a>
             </li>
             {{-- <li>
                 <a href="{{ route('admin-gs-affilate') }}"><span>{{__('Affiliate Program')}}</span></a>
@@ -304,7 +304,7 @@
 
     <li>
         <a href="#homepage" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-edit"></i>{{ __('Home Page Settings') }}
+            <i class="fas fa-edit"></i>Pengaturan Beranda
         </a>
         <ul class="collapse list-unstyled" id="homepage" data-parent="#accordion">
             <li>
