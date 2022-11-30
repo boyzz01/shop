@@ -87,7 +87,7 @@
         </a>
         <ul class="collapse list-unstyled" id="menu2" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-prod-types') }}"><span>Tambah Produk</span></a>
+                <a href="{{ route('admin-prod-create', 'physical') }}"><span>Tambah Produk</span></a>
             </li>
             <li>
                 <a href="{{ route('admin-prod-index') }}"><span>Semua Produk</span></a>
