@@ -19,31 +19,39 @@ use Config;
 use Illuminate\Support\Facades\Mail;
 
 
-class GeniusMaileraa
+class GeniusMailer
 {
     public $owner;
     public function __construct()
     {
         $username = explode('/', request()->path());
-        if (DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->exists()) {
-            $this->owner = DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->first();
-            $gs = Generalsetting::whereRegisterId($this->owner->id)->first();
-            Config::set('mail.driver', $gs->mail_driver);
-            Config::set('mail.host', $gs->mail_host);
-            Config::set('mail.port', $gs->mail_port);
-            Config::set('mail.encryption', $gs->mail_encryption);
-            Config::set('mail.username', $gs->mail_user);
-            Config::set('mail.password', $gs->mail_pass);
-        } else {
-            $gs = Generalsetting::findOrFail(1);
+        // if (DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->exists()) {
+        //     $this->owner = DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->first();
+        //     $gs = Generalsetting::whereRegisterId($this->owner->id)->first();
+        //     Config::set('mail.driver', $gs->mail_driver);
+        //     Config::set('mail.host', $gs->mail_host);
+        //     Config::set('mail.port', $gs->mail_port);
+        //     Config::set('mail.encryption', $gs->mail_encryption);
+        //     Config::set('mail.username', $gs->mail_user);
+        //     Config::set('mail.password', $gs->mail_pass);
+        // } else {
+        //     $gs = Generalsetting::findOrFail(1);
 
-            Config::set('mail.driver', $gs->mail_driver);
-            Config::set('mail.host', $gs->mail_host);
-            Config::set('mail.port', $gs->mail_port);
-            Config::set('mail.encryption', $gs->mail_encryption);
-            Config::set('mail.username', $gs->mail_user);
-            Config::set('mail.password', $gs->mail_pass);
-        }
+        //     Config::set('mail.driver', $gs->mail_driver);
+        //     Config::set('mail.host', $gs->mail_host);
+        //     Config::set('mail.port', $gs->mail_port);
+        //     Config::set('mail.encryption', $gs->mail_encryption);
+        //     Config::set('mail.username', $gs->mail_user);
+        //     Config::set('mail.password', $gs->mail_pass);
+        // }
+        $gs = Generalsetting::findOrFail(1);
+
+        Config::set('mail.driver', $gs->mail_driver);
+        Config::set('mail.host', $gs->mail_host);
+        Config::set('mail.port', $gs->mail_port);
+        Config::set('mail.encryption', $gs->mail_encryption);
+        Config::set('mail.username', $gs->mail_user);
+        Config::set('mail.password', $gs->mail_pass);
     }
 
     public function sendAutoMail(array $mailData)
