@@ -77,7 +77,7 @@ class GeniusMailer
 
             $this->mail->send();
         } catch (Exception $e) {
-            echo $e;
+            //echo $e;
         }
 
         $files = glob('assets/temp_files/*'); //get all file names
