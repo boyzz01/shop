@@ -352,7 +352,7 @@
             </li>
         </ul>
     </li>
-
+    {{-- 
     <li>
         <a href="#emails" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-at"></i>{{ __('Email Settings') }}
@@ -362,7 +362,7 @@
             <li><a href="{{ route('admin-mail-config') }}"><span>{{ __('Email Configurations') }}</span></a></li>
             <li><a href="{{ route('admin-group-show') }}"><span>{{ __('Group Email') }}</span></a></li>
         </ul>
-    </li>
+    </li> --}}
 
     {{-- <li>
         <a href="#payments" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
