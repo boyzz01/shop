@@ -151,6 +151,7 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         // $mailer = new GeniusMailer();
         // $mailer->sendCustomMail($data);
 
-        return redirect($success_url);
+        echo "ok";
+        //  return redirect($success_url);
     }
 }
