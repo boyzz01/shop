@@ -58,7 +58,7 @@ class GeniusMailer
             $body = preg_replace("/{website_title}/", $this->gs->title, $body);
 
 
-            $fileName = public_path('assets/temp_files/') . Str::random(4) . time() . '.pdf';
+            $fileName = public_path() . '/assets/temp_files/' . Str::random(4) . time() . '.pdf';
             $pdf = PDF::loadView('pdf.order', compact('order', 'cart'))->save($fileName);
 
             //Recipients
