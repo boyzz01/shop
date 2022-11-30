@@ -19,6 +19,8 @@ use Config;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 use PHPMailer\PHPMailer\PHPMailer;
+use PDF;
+use Illuminate\Support\Str;
 
 class GeniusMailer
 {
