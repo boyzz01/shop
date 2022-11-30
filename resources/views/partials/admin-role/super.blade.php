@@ -1,6 +1,7 @@
     <li>
-        <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>Pesanan</a>
-        <ul class="collapse list-unstyled" id="order" data-parent="#accordion" >
+        <a href="#order" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i
+                class="fas fa-hand-holding-usd"></i>Pesanan</a>
+        <ul class="collapse list-unstyled" id="order" data-parent="#accordion">
             <li>
                 <a href="{{ route('admin-orders-all') }}">Semua Pesanan</a>
             </li>
@@ -19,7 +20,7 @@
 
         </ul>
     </li>
-{{-- 
+    {{-- 
     <li>
         <a href="#menu1" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-flag"></i>{{ __('Manage Country') }}
@@ -34,7 +35,7 @@
         </ul>
     </li> --}}
 
-{{-- 
+    {{-- 
 
 <li>
     <a href="#income" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-hand-holding-usd"></i>{{ __('Total Earning') }}</a>
@@ -59,25 +60,25 @@
 
 
     <li>
-            <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i class="fas fa-sitemap"></i>Atur Kategori</a>
-            <ul class="collapse list-unstyled
-            @if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category')
+        <a href="#menu5" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false"><i
+                class="fas fa-sitemap"></i>Atur Kategori</a>
+        <ul class="collapse list-unstyled
+            @if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category') show
+            @elseif(request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory')
               show
-            @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory')
-              show
-            @elseif(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory')
-              show
-            @endif" id="menu5" data-parent="#accordion" >
-                    <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='category') active @endif">
-                        <a href="{{ route('admin-cat-index') }}"><span>Kategori Utama</span></a>
-                    </li>
-                    <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='subcategory') active @endif">
-                        <a href="{{ route('admin-subcat-index') }}"><span>Sub Kategori </span></a>
-                    </li>
-                    <li class="@if(request()->is('admin/attribute/*/manage') && request()->input('type')=='childcategory') active @endif">
-                        <a href="{{ route('admin-childcat-index') }}"><span>Kategori turunan</span></a>
-                    </li>
-            </ul>
+            @elseif(request()->is('admin/attribute/*/manage') && request()->input('type') == 'childcategory')
+              show @endif"
+            id="menu5" data-parent="#accordion">
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'category') active @endif">
+                <a href="{{ route('admin-cat-index') }}"><span>Kategori Utama</span></a>
+            </li>
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'subcategory') active @endif">
+                <a href="{{ route('admin-subcat-index') }}"><span>Sub Kategori </span></a>
+            </li>
+            <li class="@if (request()->is('admin/attribute/*/manage') && request()->input('type') == 'childcategory') active @endif">
+                <a href="{{ route('admin-childcat-index') }}"><span>Kategori turunan</span></a>
+            </li>
+        </ul>
     </li>
 
     <li>
@@ -121,7 +122,7 @@
     <li>
         <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>Upload Produk Massal</a>
     </li>
-
+    {{-- 
     <li>
         <a href="#menu4" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="icofont-speech-comments"></i>Diskusi Produk
@@ -137,10 +138,11 @@
                 <a href="{{ route('admin-report-index') }}"><span>Laporan</span></a>
             </li>
         </ul>
-    </li>
+    </li> --}}
 
     <li>
-        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>Kupon Diskon</a>
+        <a href="{{ route('admin-coupon-index') }}" class=" wave-effect"><i class="fas fa-percentage"></i>Kupon
+            Diskon</a>
     </li>
 
     {{-- <li>
@@ -356,9 +358,9 @@
             <i class="fas fa-at"></i>{{ __('Email Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="emails" data-parent="#accordion">
-            <li><a href="{{route('admin-mail-index')}}"><span>{{ __('Email Template') }}</span></a></li>
-            <li><a href="{{route('admin-mail-config')}}"><span>{{ __('Email Configurations') }}</span></a></li>
-            <li><a href="{{route('admin-group-show')}}"><span>{{ __('Group Email') }}</span></a></li>
+            <li><a href="{{ route('admin-mail-index') }}"><span>{{ __('Email Template') }}</span></a></li>
+            <li><a href="{{ route('admin-mail-config') }}"><span>{{ __('Email Configurations') }}</span></a></li>
+            <li><a href="{{ route('admin-group-show') }}"><span>{{ __('Group Email') }}</span></a></li>
         </ul>
     </li>
 
@@ -379,8 +381,8 @@
             <i class="fas fa-paper-plane"></i>{{ __('Social Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
-                <li><a href="{{route('admin-sociallink-index')}}"><span>{{ __('Social Links') }}</span></a></li>
-                {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
+            <li><a href="{{ route('admin-sociallink-index') }}"><span>{{ __('Social Links') }}</span></a></li>
+            {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
                 <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li> --}}
         </ul>
     </li>
@@ -390,14 +392,15 @@
             <i class="fas fa-language"></i>{{ __('Language Settings') }}
         </a>
         <ul class="collapse list-unstyled" id="langs" data-parent="#accordion">
-                <li><a href="{{route('admin-lang-index')}}"><span>{{ __('Website Language') }}</span></a></li>
-                <li><a href="{{route('admin-tlang-index')}}"><span>{{ __('Admin Panel Language') }}</span></a></li>
+            <li><a href="{{ route('admin-lang-index') }}"><span>{{ __('Website Language') }}</span></a></li>
+            <li><a href="{{ route('admin-tlang-index') }}"><span>{{ __('Admin Panel Language') }}</span></a></li>
 
         </ul>
     </li>
 
     <li>
-        <a href="{{ route('admin.fonts.index') }}" class=" wave-effect"><i class="fa fa-font"></i>{{ __('Font Option') }}</a>
+        <a href="{{ route('admin.fonts.index') }}" class=" wave-effect"><i
+                class="fa fa-font"></i>{{ __('Font Option') }}</a>
     </li>
 
     {{-- <li>
@@ -437,7 +440,7 @@
     <li>
         <a href="{{ route('admin-addon-index') }}" class=" wave-effect"><i class="fas fa-list-alt"></i>{{ __('Addon Manager') }}</a>
     </li> --}}
-{{-- 
+    {{-- 
     <li>
         <a href="#sactive" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-cog"></i>{{ __('System Activation') }}
