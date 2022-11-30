@@ -133,22 +133,9 @@ class FrontendController extends FrontBaseController
             })
             ->get();
 
-        $data['best_products'] = Product::with('user')->whereStatus(1)->whereBest(1)
-            ->home($this->language->id)
-            ->take($gs->best_seller_count)
-            ->with(['user', 'category'])
-            ->whereHas('user', function ($user) {
-                $user->where('is_vendor', 2);
-            })
-            ->get();
+        $data['best_products'] = Product::whereStatus(1)->whereBest(1)->get();
 
         $data['popular_products'] = Product::with('user')->whereStatus(1)->whereFeatured(1)
-            ->home($this->language->id)
-            ->take($gs->popular_count)
-            ->with(['user', 'category'])
-            ->whereHas('user', function ($user) {
-                $user->where('is_vendor', 2);
-            })
             ->get();
 
         $data['top_products'] = Product::with('user')->whereStatus(1)->whereTop(1)
