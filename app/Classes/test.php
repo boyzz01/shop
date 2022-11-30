@@ -18,41 +18,27 @@ use DB;
 use Config;
 use Exception;
 use Illuminate\Support\Facades\Mail;
-
+use PHPMailer\PHPMailer\PHPMailer;
 
 class GeniusMailer
 {
     public $owner;
     public function __construct()
     {
-        $username = explode('/', request()->path());
-        // if (DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->exists()) {
-        //     $this->owner = DB::table('admins')->where('username', $username[0])->where('role', 'Owner')->first();
-        //     $gs = Generalsetting::whereRegisterId($this->owner->id)->first();
-        //     Config::set('mail.driver', $gs->mail_driver);
-        //     Config::set('mail.host', $gs->mail_host);
-        //     Config::set('mail.port', $gs->mail_port);
-        //     Config::set('mail.encryption', $gs->mail_encryption);
-        //     Config::set('mail.username', $gs->mail_user);
-        //     Config::set('mail.password', $gs->mail_pass);
-        // } else {
-        //     $gs = Generalsetting::findOrFail(1);
+        $this->gs = Generalsetting::findOrFail(1);
 
-        //     Config::set('mail.driver', $gs->mail_driver);
-        //     Config::set('mail.host', $gs->mail_host);
-        //     Config::set('mail.port', $gs->mail_port);
-        //     Config::set('mail.encryption', $gs->mail_encryption);
-        //     Config::set('mail.username', $gs->mail_user);
-        //     Config::set('mail.password', $gs->mail_pass);
-        // }
-        $gs = Generalsetting::findOrFail(1);
+        $this->mail = new PHPMailer(true);
 
-        Config::set('mail.driver', $gs->mail_driver);
-        Config::set('mail.host', $gs->mail_host);
-        Config::set('mail.port', $gs->mail_port);
-        Config::set('mail.encryption', $gs->mail_encryption);
-        Config::set('mail.username', $gs->mail_user);
-        Config::set('mail.password', $gs->mail_pass);
+        if ($this->gs->is_smtp == 1) {
+
+            $this->mail->isSMTP();                          // Send using SMTP
+            $this->mail->Host       = $this->gs->mail_host;       // Set the SMTP server to send through
+            $this->mail->SMTPAuth   = true;                 // Enable SMTP authentication
+            $this->mail->Username   = $this->gs->mail_user;   // SMTP username
+            $this->mail->Password   = $this->gs->mail_pass;   // SMTP password
+            $this->mail->SMTPSecure = $this->gs->mail_encryption;      // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` encouraged
+            $this->mail->Port       = $this->gs->mail_port;
+        }
     }
 
     public function sendAutoOrderMail(array $mailData, $id)
