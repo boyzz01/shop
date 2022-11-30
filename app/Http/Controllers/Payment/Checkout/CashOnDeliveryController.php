@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Payment\Checkout;
 
 use App\{
     Models\Cart,
-    Models\Order,
-    Classes\GeniusMailer
+    Models\Order
 };
+use App\Classes\GeniusMailer;
 use App\Models\Country;
 use App\Models\Reward;
 use App\Models\State;
