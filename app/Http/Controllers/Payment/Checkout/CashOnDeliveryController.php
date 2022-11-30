@@ -15,21 +15,24 @@ use Illuminate\Support\Facades\Auth;
 use Session;
 use OrderHelper;
 use Illuminate\Support\Str;
+use Image;
 
 class CashOnDeliveryController extends CheckoutBaseControlller
 {
     public function store(Request $request)
     {
+        //   echo $request->buktip;
+
         $input = $request->all();
-        if($request->pass_check) {
+        if ($request->pass_check) {
             $auth = OrderHelper::auth_check($input); // For Authentication Checking
-            if(!$auth['auth_success']){
-                return redirect()->back()->with('unsuccess',$auth['error_message']);
+            if (!$auth['auth_success']) {
+                return redirect()->back()->with('unsuccess', $auth['error_message']);
             }
         }
 
         if (!Session::has('cart')) {
-            return redirect()->route('front.cart')->with('success',__("You don't have any product to checkout."));
+            return redirect()->route('front.cart')->with('success', __("You don't have any product to checkout."));
         }
 
         $oldCart = Session::get('cart');
@@ -51,44 +54,50 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         $input['cart'] = $new_cart;
         $input['affilate_users'] = $affilate_users;
         $input['pay_amount'] = $request->total / $this->curr->value;
-        $input['order_number'] = Str::random(4).time();
+        $input['order_number'] = Str::random(4) . time();
         $input['wallet_price'] = $request->wallet_price / $this->curr->value;
-        if($input['tax_type'] == 'state_tax'){
-            $input['tax_location'] = State::findOrFail($input['tax'])->state;
-        }else{
-            $input['tax_location'] = Country::findOrFail($input['tax'])->country_name;
-        }
-        $input['tax'] = Session::get('current_tax');
+        // if ($input['tax_type'] == 'state_tax') {
+        //     $input['tax_location'] = State::findOrFail($input['tax'])->state;
+        // } else {
+        //     $input['tax_location'] = Country::findOrFail($input['tax'])->country_name;
+        // }
+        // $input['tax'] = Session::get('current_tax');
 
+
+        $bukti =  $request->file('buktip')->store("bukti");
+        $url =  asset("storage/" . $bukti);
+        $input['bukti'] = $url;
+
+
+        $input['tax'] = 0;
         if (Session::has('affilate')) {
             $val = $request->total / $this->curr->value;
             $val = $val / 100;
             $sub = $val * $this->gs->affilate_charge;
-            if($temp_affilate_users != null){
+            if ($temp_affilate_users != null) {
                 $t_sub = 0;
-                foreach($temp_affilate_users as $t_cost){
+                foreach ($temp_affilate_users as $t_cost) {
                     $t_sub += $t_cost['charge'];
                 }
                 $sub = $sub - $t_sub;
             }
-            if($sub > 0){
-                $user = OrderHelper::affilate_check(Session::get('affilate'),$sub,$input['dp']); // For Affiliate Checking
+            if ($sub > 0) {
+                $user = OrderHelper::affilate_check(Session::get('affilate'), $sub, $input['dp']); // For Affiliate Checking
                 $input['affilate_user'] = Session::get('affilate');
                 $input['affilate_charge'] = $sub;
             }
-
         }
 
         $order->fill($input)->save();
-        $order->tracks()->create(['title' => 'Pending', 'text' => 'You have successfully placed your order.' ]);
+        $order->tracks()->create(['title' => 'Pending', 'text' => 'You have successfully placed your order.']);
         $order->notifications()->create();
 
-        if($input['coupon_id'] != "") {
+        if ($input['coupon_id'] != "") {
             OrderHelper::coupon_check($input['coupon_id']); // For Coupon Checking
         }
 
-        if(Auth::check()){
-            if($this->gs->is_reward == 1){
+        if (Auth::check()) {
+            if ($this->gs->is_reward == 1) {
                 $num = $order->pay_amount;
                 $rewards = Reward::get();
                 foreach ($rewards as $i) {
@@ -96,17 +105,17 @@ class CashOnDeliveryController extends CheckoutBaseControlller
                 }
 
                 asort($smallest);
-                $final_reword = Reward::where('order_amount',key($smallest))->first();
+                $final_reword = Reward::where('order_amount', key($smallest))->first();
                 Auth::user()->update(['reward' => (Auth::user()->reward + $final_reword->reward)]);
             }
         }
 
         OrderHelper::size_qty_check($cart); // For Size Quantiy Checking
         OrderHelper::stock_check($cart); // For Stock Checking
-        OrderHelper::vendor_order_check($cart,$order); // For Vendor Order Checking
+        OrderHelper::vendor_order_check($cart, $order); // For Vendor Order Checking
 
-        Session::put('temporder',$order);
-        Session::put('tempcart',$cart);
+        Session::put('temporder', $order);
+        Session::put('tempcart', $cart);
         Session::forget('cart');
         Session::forget('already');
         Session::forget('coupon');
@@ -115,7 +124,7 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         Session::forget('coupon_percentage');
 
         if ($order->user_id != 0 && $order->wallet_price != 0) {
-            OrderHelper::add_to_transaction($order,$order->wallet_price); // Store To Transactions
+            OrderHelper::add_to_transaction($order, $order->wallet_price); // Store To Transactions
         }
 
         //Sending Email To Buyer
@@ -131,13 +140,13 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         ];
 
         $mailer = new GeniusMailer();
-        $mailer->sendAutoOrderMail($data,$order->id);
+        $mailer->sendAutoOrderMail($data, $order->id);
 
         //Sending Email To Admin
         $data = [
             'to' => $this->ps->contact_email,
             'subject' => "New Order Recieved!!",
-            'body' => "Hello Admin!<br>Your store has received a new order.<br>Order Number is ".$order->order_number.".Please login to your panel to check. <br>Thank you.",
+            'body' => "Hello Admin!<br>Your store has received a new order.<br>Order Number is " . $order->order_number . ".Please login to your panel to check. <br>Thank you.",
         ];
         $mailer = new GeniusMailer();
         $mailer->sendCustomMail($data);

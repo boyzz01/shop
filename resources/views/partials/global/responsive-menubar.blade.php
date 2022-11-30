@@ -73,10 +73,10 @@
                             @if (!empty(request()->input('maxprice')))
                             <input type="hidden" name="maxprice" value="{{ request()->input('maxprice') }}">
                             @endif
-                            <input type="text" id="prod_name" class="col form-control search-field " name="search" placeholder="Search Product For" value="{{ request()->input('search') }}">
+                            <input type="text" id="prod_name" class="col form-control search-field " name="search" placeholder="Cari Produk" value="{{ request()->input('search') }}">
                             <div class=" categori-container select-appearance-none " id="catSelectForm">
                                 <select name="category" class="form-control categoris " id="category_select">
-                                    <option selected="">{{ __('All Categories') }}</option>
+                                    <option selected="">Semua Kategori</option>
                                     @foreach(DB::table('categories')->where('language_id',$langg->id)->where('status',1)->get() as $data)
                                      <option value="{{ $data->slug }}" {{ Request::route('category') == $data->slug ? 'selected' : '' }}>
                                     {{ $data->name }}
@@ -112,9 +112,9 @@
                             <li><a href="{{ route('user-logout') }}"><span class="menu-item-text">{{ __('Logout') }}</span></a></li>
 
                             @else
-                            <li><a href="{{ route('user.login') }}"><span class="menu-item-text sign-in">{{ __('Sign in') }}</span></a></li>
+                            <li><a href="{{ route('user.login') }}"><span class="menu-item-text sign-in">Login</span></a></li>
 
-                            <li><a href="{{ route('user.register') }}"><span class="menu-item-text join" >{{ __('Join') }}</span></a></li>
+                            <li><a href="{{ route('user.register') }}"><span class="menu-item-text join" >Daftar</span></a></li>
                             @endif
 
                         </ul>

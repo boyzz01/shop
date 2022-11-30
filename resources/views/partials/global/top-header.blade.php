@@ -9,7 +9,7 @@
           </div>
           <div class="col-lg-8 ">
              <ul class="top-links text-general ms-auto  d-flex justify-content-end">
-                <li class="my-account-dropdown">
+                {{-- <li class="my-account-dropdown">
                    <div class="language-selector nice-select">
                       <i class="fas fa-globe-americas text-dark"></i>
                       <select name="language" class="language selectors nice">
@@ -32,7 +32,7 @@
                       @endforeach
                       </select>
                    </div>
-                </li>
+                </li> --}}
                 {{-- @if($gs->reg_vendor == 1)
                 <div class=" align-items-center text-general sell">
                    @if(Auth::check())

@@ -1208,7 +1208,7 @@ Route::group(['middleware' => 'maintenance'], function () {
     // User Wishlist Ends
 
     // User Review
-    Route::post('/review/submit', 'User\UserController@reviewsubmit')->name('front.review.submit');
+    Route::post('/review/submit', 'User\UserController@reviewsubmit')->name('front.review.submit.user');
     // User Review Ends
 
     // User Orders
