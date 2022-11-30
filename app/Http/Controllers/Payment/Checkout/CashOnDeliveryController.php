@@ -114,14 +114,14 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         OrderHelper::stock_check($cart); // For Stock Checking
         OrderHelper::vendor_order_check($cart, $order); // For Vendor Order Checking
 
-        // Session::put('temporder', $order);
-        // Session::put('tempcart', $cart);
-        // Session::forget('cart');
-        // Session::forget('already');
-        // Session::forget('coupon');
-        // Session::forget('coupon_total');
-        // Session::forget('coupon_total1');
-        // Session::forget('coupon_percentage');
+        Session::put('temporder', $order);
+        Session::put('tempcart', $cart);
+        Session::forget('cart');
+        Session::forget('already');
+        Session::forget('coupon');
+        Session::forget('coupon_total');
+        Session::forget('coupon_total1');
+        Session::forget('coupon_percentage');
 
         if ($order->user_id != 0 && $order->wallet_price != 0) {
             OrderHelper::add_to_transaction($order, $order->wallet_price); // Store To Transactions
@@ -143,15 +143,15 @@ class CashOnDeliveryController extends CheckoutBaseControlller
         $mailer->sendAutoOrderMail($data, $order->id);
 
         //Sending Email To Admin
-        // $data = [
-        //     'to' => $this->ps->contact_email,
-        //     'subject' => "New Order Recieved!!",
-        //     'body' => "Hello Admin!<br>Your store has received a new order.<br>Order Number is " . $order->order_number . ".Please login to your panel to check. <br>Thank you.",
-        // ];
-        // $mailer = new GeniusMailer();
-        // $mailer->sendCustomMail($data);
+        $data = [
+            'to' => $this->ps->contact_email,
+            'subject' => "New Order Recieved!!",
+            'body' => "Hello Admin!<br>Your store has received a new order.<br>Order Number is " . $order->order_number . ".Please login to your panel to check. <br>Thank you.",
+        ];
+        $mailer = new GeniusMailer();
+        $mailer->sendCustomMail($data);
 
-        echo "ok";
-        //  return redirect($success_url);
+        //echo "ok";
+        return redirect($success_url);
     }
 }
