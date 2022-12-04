@@ -491,8 +491,7 @@
                         @endif
                         <input type="hidden" id="original_tax" value="0">
                         <input type="hidden" id="wallet-price" name="wallet_price" value="0">
-                        <input type="hidden" id="ttotal"
-                            value="{{ Session::has('cart') ? App\Models\Product::convertPrice(Session::get('cart')->totalPrice) : '0' }}">
+                        <input type="hidden" id="ttotal" value="{{ Session::has('cart') ? $totalPrice : '0' }}">
                         <input type="hidden" name="coupon_code" id="coupon_code"
                             value="{{ Session::has('coupon_code') ? Session::get('coupon_code') : '' }}">
                         <input type="hidden" name="coupon_discount" id="coupon_discount"
@@ -1017,6 +1016,8 @@
 
             $('.gocover').show();
             var total = $("#ttotal").val();
+            // total.replace("/,/g", "a");
+            // alert(total);
             var ship = 0;
             $.ajax({
                 type: "GET",
