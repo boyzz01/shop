@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Country extends Model
 {
-    protected $fillable = ['name','status'];
+    protected $fillable = ['name', 'status'];
     public $timestamps = false;
 
 
@@ -14,6 +14,4 @@ class Country extends Model
     {
         return $this->hasMany('App\Models\State');
     }
-
-
 }

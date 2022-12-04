@@ -20,20 +20,20 @@
 
         </ul>
     </li>
-    {{-- 
+
     <li>
         <a href="#menu1" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-flag"></i>{{ __('Manage Country') }}
+            <i class="fas fa-flag"></i>Pengaturan Ongkos Kirim
         </a>
         <ul class="collapse list-unstyled" id="menu1" data-parent="#accordion">
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-country-index') }}"><span>{{ __('Country') }}</span></a>
-            </li>
+            </li> --}}
             <li>
-                <a href="{{ route('admin-country-tax') }}"><span>{{ __('Manage Tax') }}</span></a>
+                <a href="{{ route('admin-country-tax') }}"><span>Atur Ongkir</span></a>
             </li>
         </ul>
-    </li> --}}
+    </li>
 
     {{-- 
 
@@ -378,10 +378,10 @@
 
     <li>
         <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-paper-plane"></i>{{ __('Social Settings') }}
+            <i class="fas fa-paper-plane"></i>Pengaturan Sosial Media
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
-            <li><a href="{{ route('admin-sociallink-index') }}"><span>{{ __('Social Links') }}</span></a></li>
+            <li><a href="{{ route('admin-sociallink-index') }}"><span>Link Sosial Media</span></a></li>
             {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
                 <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li> --}}
         </ul>

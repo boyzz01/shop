@@ -169,8 +169,8 @@
                                                         </select>
                                                     </div>
 
-                                                    <div class="col-lg-6 d-none select_state">
-                                                        <select class="form-control " id="show_state"
+                                                    <div class="col-lg-6 select_state">
+                                                        <select class="form-control " required id="show_state"
                                                             name="customer_state">
 
                                                         </select>
@@ -520,10 +520,10 @@
                                     </li>
                                     <li class="tax_show  d-none">
                                         <p>
-                                            {{ __('Tax') }}
+                                            Ongkos Kirim
                                         </p>
                                         <P>
-                                            <b> <span class="original_tax">0</span> % </b>
+                                            <b> Rp.<span class="original_tax">0</span> </b>
                                         </P>
                                     </li>
                                     @if (Session::has('coupon'))
@@ -900,6 +900,41 @@
 
         let original_tax = 0;
 
+        $(function() {
+            $(this).attr('data-href');
+            let state_id = 0;
+            let country_id = $('#select_country option:selected').attr('data');
+
+            let is_state = $('#select_country option:selected').attr('rel');
+            let is_auth = $('#select_country option:selected').attr('rel1');
+            //  alert(is_auth);
+            let is_user = $('#select_country option:selected').attr('rel5');
+            let state_url = $('#select_country option:selected').attr('data-href');
+            if (is_auth == 1 || is_state == 1) {
+                if (is_state == 1) {
+                    $('.select_state').removeClass('d-none');
+                    $.get(state_url, function(response) {
+                        $('#show_state').html(response.data);
+                        if (is_user == 1) {
+                            tax_submit(country_id, response.state);
+                        } else {
+                            tax_submit(country_id, state_id);
+                        }
+
+                    });
+
+                } else {
+                    tax_submit(country_id, state_id);
+                    hide_state();
+                }
+
+            } else {
+
+                tax_submit(country_id, state_id);
+                hide_state();
+            }
+        });
+
         $(document).on('change', '#select_country', function() {
 
             $(this).attr('data-href');
@@ -946,31 +981,32 @@
         }
 
 
-        $(document).on('ready', function() {
+        // $(document).on('ready', function() {
 
-            let country_id = $('#select_country option:selected').attr('data');
-            let state_id = $('#select_country option:selected').attr('rel2');
-            let is_state = $('#select_country option:selected', this).attr('rel');
-            let is_auth = $('#select_country option:selected', this).attr('rel1');
-            let state_url = $('#select_country option:selected', this).attr('data-href');
+        //     alert('olk');
+        //     let country_id = $('#select_country option:selected').attr('data');
+        //     let state_id = $('#select_country option:selected').attr('rel2');
+        //     let is_state = $('#select_country option:selected', this).attr('rel');
+        //     let is_auth = $('#select_country option:selected', this).attr('rel1');
+        //     let state_url = $('#select_country option:selected', this).attr('data-href');
 
-            if (is_auth == 1 && is_state == 1) {
-                if (is_state == 1) {
-                    $('.select_state').removeClass('d-none');
-                    $.get(state_url, function(response) {
-                        $('#show_state').html(response.data);
-                        tax_submit(country_id, response.state);
-                    });
+        //     if (is_auth == 1 && is_state == 1) {
+        //         if (is_state == 1) {
+        //             $('.select_state').removeClass('d-none');
+        //             $.get(state_url, function(response) {
+        //                 $('#show_state').html(response.data);
+        //                 tax_submit(country_id, response.state);
+        //             });
 
-                } else {
-                    tax_submit(country_id, state_id);
-                    hide_state();
-                }
-            } else {
-                tax_submit(country_id, state_id);
-                hide_state();
-            }
-        });
+        //         } else {
+        //             tax_submit(country_id, state_id);
+        //             hide_state();
+        //         }
+        //     } else {
+        //         tax_submit(country_id, state_id);
+        //         hide_state();
+        //     }
+        // });
 
 
 
@@ -994,10 +1030,14 @@
                     $('#grandtotal').val(data[0]);
                     $('#tgrandtotal').val(data[0]);
                     $('#original_tax').val(data[1]);
+
+
                     $('.tax_show').removeClass('d-none');
                     $('#input_tax').val(data[11]);
                     $('#input_tax_type').val(data[12]);
-                    $('.original_tax').html(parseFloat(data[1]).toFixed(2));
+                    $('.original_tax').html(data[1]);
+
+
                     var ttotal = parseFloat($('#grandtotal').val());
                     var tttotal = parseFloat($('#grandtotal').val()) + (parseFloat(mship) + parseFloat(mpack));
                     ttotal = parseFloat(ttotal).toFixed(2);

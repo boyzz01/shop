@@ -217,7 +217,7 @@ class CheckoutController extends FrontBaseController
         }
 
 
-        $html_states = '<option value="" > Select State </option>';
+        $html_states = '<option value="" > Pilih Provinsi </option>';
         foreach ($states as $state) {
             if ($state->id == $user_state) {
                 $check = 'selected';
