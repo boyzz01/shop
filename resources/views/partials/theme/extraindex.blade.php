@@ -340,31 +340,15 @@
             </div>
             <div class="col-lg-2 col-md-6">
                 <div class="footer-widget category-widget mb-5">
-                    <h3 class="widget-title mb-4 xs-mx-none">{{ __('Footer Links') }}</h3>
+                    <h3 class="widget-title mb-4 xs-mx-none">Marketplace</h3>
                     <ul>
-                        @if ($ps->home == 1)
+                        @foreach (DB::table('olshop_links')->where('user_id', 0)->where('status', 1)->get() as $link)
                             <li>
-                                <a href="{{ route('front.index') }}">{{ __('Home') }}</a>
+                                <a href="{{ $link->link }}"><i
+                                        class="{{ $link->icon }}"></i>{{ $link->nama }}</a>
                             </li>
-                        @endif
-                        @if ($ps->blog == 1)
-                            <li>
-                                <a href="{{ route('front.blog') }}">{{ __('Blog') }}</a>
-                            </li>
-                        @endif
-                        @if ($ps->faq == 1)
-                            <li>
-                                <a href="{{ route('front.faq') }}">{{ __('Faq') }}</a>
-                            </li>
-                        @endif
-                        @foreach (DB::table('pages')->where('language_id', $langg->id)->where('footer', '=', 1)->get() as $data)
-                            <li><a href="{{ route('front.vendor', $data->slug) }}">{{ $data->title }}</a></li>
                         @endforeach
-                        @if ($ps->contact == 1)
-                            <li>
-                                <a href="{{ route('front.contact') }}">{{ __('Contact Us') }}</a>
-                            </li>
-                        @endif
+
 
                     </ul>
                 </div>

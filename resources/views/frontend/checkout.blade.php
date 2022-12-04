@@ -409,14 +409,23 @@
 
                                                             <div class="row">
                                                                 <div class="col-lg-6">
-                                                                    <label>Mohon Transfer Ke Bank <b>ABC</b> No.Rekening
-                                                                        <b>123456</b></label>
-                                                                    <label>A/N : <B>ABC</B></label>
-                                                                    <label style="margin-top: 30px">Upload Bukti
-                                                                        Pembayaran</label>
-                                                                    <input type="file" id="bukti"
-                                                                        class="form-control" name="buktip"
-                                                                        accept="image/*" placeholder="">
+                                                                    <label>Mohon Transfer Ke Salah Satu Bank Berikut
+                                                                        <hr>
+                                                                        <ul>
+                                                                            @foreach (DB::table('rekenings')->where('user_id', 0)->where('status', 1)->get() as $bank)
+                                                                                <li>
+                                                                                    Bank :{{ $bank->bank }}<br>
+                                                                                    Rekening : {{ $bank->rekening }} <br>
+                                                                                    A/N : {{ $bank->nama }}
+                                                                                </li>
+                                                                                <hr>
+                                                                            @endforeach
+                                                                        </ul>
+                                                                        <label style="margin-top: 30px">Upload Bukti
+                                                                            Pembayaran</label>
+                                                                        <input type="file" id="bukti"
+                                                                            class="form-control" name="buktip"
+                                                                            accept="image/*" placeholder="">
                                                                 </div>
 
                                                             </div>

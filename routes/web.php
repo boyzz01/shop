@@ -778,6 +778,29 @@ Route::prefix('admin')->group(function () {
     Route::delete('/social-link/delete/{id}', 'Admin\SocialLinkController@destroy')->name('admin-sociallink-delete');
     Route::get('/social-link/status/{id1}/{id2}', 'Admin\SocialLinkController@status')->name('admin-sociallink-status');
 
+    //Online Shop
+
+    Route::get('/olshop-link/datatables', 'Admin\OlshopLinkController@datatables')->name('admin-olshoplink-datatables'); //JSON REQUEST
+    Route::get('/olshop-link', 'Admin\OlshopLinkController@index')->name('admin-olshoplink-index');
+    Route::get('/olshop-link/create', 'Admin\OlshopLinkController@create')->name('admin-olshoplink-create');
+    Route::post('/olshop-link/create', 'Admin\OlshopLinkController@store')->name('admin-olshoplink-store');
+    Route::get('/olshop-link/edit/{id}', 'Admin\OlshopLinkController@edit')->name('admin-olshoplink-edit');
+    Route::post('/olshop-link/edit/{id}', 'Admin\OlshopLinkController@update')->name('admin-olshoplink-update');
+    Route::delete('/olshop-link/delete/{id}', 'Admin\OlshopLinkController@destroy')->name('admin-olshoplink-delete');
+    Route::get('/olshop-link/status/{id1}/{id2}', 'Admin\OlshopLinkController@status')->name('admin-olshoplink-status');
+
+
+    //Rekening
+
+    Route::get('/rekening/datatables', 'Admin\RekeningController@datatables')->name('admin-rekening-datatables'); //JSON REQUEST
+    Route::get('/rekening', 'Admin\RekeningController@index')->name('admin-rekening-index');
+    Route::get('/rekening/create', 'Admin\RekeningController@create')->name('admin-rekening-create');
+    Route::post('/rekening/create', 'Admin\RekeningController@store')->name('admin-rekening-store');
+    Route::get('/rekening/edit/{id}', 'Admin\RekeningController@edit')->name('admin-rekening-edit');
+    Route::post('/rekening/edit/{id}', 'Admin\RekeningController@update')->name('admin-rekening-update');
+    Route::delete('/rekening/delete/{id}', 'Admin\RekeningController@destroy')->name('admin-rekening-delete');
+    Route::get('/rekening/status/{id1}/{id2}', 'Admin\RekeningController@status')->name('admin-rekening-status');
+
     //------------ ADMIN SOCIAL LINK ENDS ------------
     Route::get('/social', 'Admin\SocialSettingController@index')->name('admin-social-index');
     Route::post('/social/update', 'Admin\SocialSettingController@socialupdate')->name('admin-social-update');

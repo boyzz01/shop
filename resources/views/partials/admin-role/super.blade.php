@@ -119,6 +119,20 @@
         </ul>
     </li> --}}
 
+    {{-- <li>
+        <a href="#affiliateprod" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+            <i class="icofont-opencart"></i>{{ __('Affiliate Products') }}
+        </a>
+        <ul class="collapse list-unstyled" id="affiliateprod" data-parent="#accordion">
+            <li>
+                <a href="{{ route('admin-import-create') }}"><span>{{ __('Add Affiliate Product') }}</span></a>
+            </li>
+            <li>
+                <a href="{{ route('admin-import-index') }}"><span>{{ __('All Affiliate Products') }}</span></a>
+            </li>
+        </ul>
+    </li> --}}
+
     <li>
         <a href="{{ route('admin-prod-import') }}"><i class="fas fa-upload"></i>Upload Produk Massal</a>
     </li>
@@ -178,6 +192,19 @@
             </li>
         </ul>
     </li> --}}
+
+    <li>
+        <a href="#customerDeposit" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
+            <i class="icofont-money"></i>Atur Rekening
+        </a>
+        <ul class="collapse list-unstyled" id="customerDeposit" data-parent="#accordion">
+            <li>
+                <a href="{{ route('admin-rekening-index') }}"><span>Rekening Transfer</span></a>
+
+            </li>
+
+        </ul>
+    </li>
 
     {{-- <li>
         <a href="#vendor" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
@@ -378,10 +405,11 @@
 
     <li>
         <a href="#socials" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
-            <i class="fas fa-paper-plane"></i>Pengaturan Sosial Media
+            <i class="fas fa-paper-plane"></i>Link External
         </a>
         <ul class="collapse list-unstyled" id="socials" data-parent="#accordion">
             <li><a href="{{ route('admin-sociallink-index') }}"><span>Link Sosial Media</span></a></li>
+            <li><a href="{{ route('admin-olshoplink-index') }}"><span>Link Online Shops</span></a></li>
             {{-- <li><a href="{{route('admin-social-facebook')}}"><span>{{ __('Facebook Login') }}</span></a></li>
                 <li><a href="{{route('admin-social-google')}}"><span>{{ __('Google Login') }}</span></a></li> --}}
         </ul>
