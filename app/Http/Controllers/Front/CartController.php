@@ -863,9 +863,9 @@ class CartController extends FrontBaseController
 
 
         $gs = Generalsetting::findOrFail(1);
-        $data[9] = $_GET['total'];
+        // $data[9] = $_GET['total'];
         $total =  $_GET['total'];
-        $data[10] = $total;
+        // $data[10] = $total;
         $stotal = $tax;
 
         $sstotal = $stotal * $this->curr->value;
