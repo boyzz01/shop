@@ -864,7 +864,7 @@ class CartController extends FrontBaseController
 
         $gs = Generalsetting::findOrFail(1);
 
-        $total = (float)preg_replace('/[^0-9\.]/ui', '', $_GET['total']);
+        $total = $_GET['total'];
 
         $stotal = $tax;
 
