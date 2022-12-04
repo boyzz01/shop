@@ -864,7 +864,7 @@ class CartController extends FrontBaseController
 
         $gs = Generalsetting::findOrFail(1);
 
-        $total = $_GET['total'];
+        $total = (float)preg_replace('/[^0-9\.]/ui', '', $_GET['total']);
 
         $stotal = $tax;
 
@@ -882,10 +882,10 @@ class CartController extends FrontBaseController
         $data[0] = $total;
         $data[1] = $tax;
 
-        $data[0] = round($total, 2);
+        $data[0] = $total;
 
         if (Session::has('coupon')) {
-            $data[0] = round($total - Session::get('coupon'), 2);
+            $data[0] = round($total - Session::get('coupon'), 0);
         }
 
         return response()->json($data);
