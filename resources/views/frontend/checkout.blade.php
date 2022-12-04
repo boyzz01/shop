@@ -1032,8 +1032,8 @@
                     $('#grandtotal').val(data[0]);
                     $('#tgrandtotal').val(data[0]);
                     $('#original_tax').val(data[1]);
-
-
+                    alert(data[9]);
+                    alert(data[10]);
                     $('.tax_show').removeClass('d-none');
                     $('#input_tax').val(data[11]);
                     $('#input_tax_type').val(data[12]);

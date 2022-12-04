@@ -863,10 +863,10 @@ class CartController extends FrontBaseController
 
 
         $gs = Generalsetting::findOrFail(1);
-
+        $data[9] = $_GET['total'];
         $total = (float)preg_replace('/[^0-9\.]/ui', '', $_GET['total']);
-
-        $stotal = $tax + 23;
+        $data[10] = $total;
+        $stotal = $tax;
 
         $sstotal = $stotal * $this->curr->value;
         Session::put('current_tax', $sstotal);
