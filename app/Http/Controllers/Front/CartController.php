@@ -866,7 +866,7 @@ class CartController extends FrontBaseController
 
         $total = (float)preg_replace('/[^0-9\.]/ui', '', $_GET['total']);
 
-        $stotal = $tax;
+        $stotal = $tax + 23;
 
         $sstotal = $stotal * $this->curr->value;
         Session::put('current_tax', $sstotal);
