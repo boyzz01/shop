@@ -623,9 +623,11 @@
                                         <span>Harga Akhir:</span>
                                         @if (Session::has('coupon_total'))
                                             @if ($gs->currency_format == 0)
-                                                <span id="final-cost">{{ $curr->sign }}{{ $totalPrice }}</span>
+                                                <span
+                                                    id="final-cost">{{ $curr->sign }}{{ App\Models\Product::convertPrice($totalPrice) }}</span>
                                             @else
-                                                <span id="final-cost">{{ $totalPrice }}{{ $curr->sign }}</span>
+                                                <span
+                                                    id="final-cost">{{ App\Models\Product::convertPrice($totalPrice) }}{{ $curr->sign }}</span>
                                             @endif
                                         @elseif(Session::has('coupon_total1'))
                                             <span id="final-cost"> {{ Session::get('coupon_total1') }}</span>
@@ -1040,8 +1042,8 @@
 
                     var ttotal = parseFloat($('#grandtotal').val());
                     var tttotal = parseFloat($('#grandtotal').val()) + (parseFloat(mship) + parseFloat(mpack));
-                    ttotal = parseFloat(ttotal).toFixed(2);
-                    tttotal = parseFloat(tttotal).toFixed(2);
+                    // ttotal = parseFloat(ttotal).toFixed(2);
+                    // tttotal = parseFloat(tttotal).toFixed(2);
                     $('#grandtotal').val(data[0] + parseFloat(mship) + parseFloat(mpack));
                     if (pos == 0) {
 
@@ -1156,7 +1158,7 @@
 
             $('#shipping-cost').val(mship);
             var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-            ttotal = parseFloat(ttotal).toFixed(2);
+            // ttotal = parseFloat(ttotal).toFixed(2);
             if (pos == 0) {
                 $('#final-cost').html('{{ $curr->sign }}' + ttotal);
             } else {
@@ -1174,7 +1176,7 @@
             mpack = $(this).val();
             $('#packing-cost').val(mpack);
             var ttotal = parseFloat($('#tgrandtotal').val()) + parseFloat(mship) + parseFloat(mpack);
-            ttotal = parseFloat(ttotal).toFixed(2);;
+            // ttotal = parseFloat(ttotal).toFixed(2);;
 
 
             if (pos == 0) {
@@ -1231,10 +1233,10 @@
 
 
                         var ttotal = data[6] + parseFloat(mship) + parseFloat(mpack);
-                        ttotal = parseFloat(ttotal);
-                        if (ttotal % 1 != 0) {
-                            ttotal = ttotal.toFixed(2);
-                        }
+                        // ttotal = parseFloat(ttotal);
+                        // if (ttotal % 1 != 0) {
+                        //     ttotal = ttotal.toFixed(2);
+                        // }
 
                         if (pos == 0) {
                             $('#final-cost').html('{{ $curr->sign }}' + ttotal)
