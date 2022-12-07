@@ -1314,7 +1314,7 @@ h6,
 	border: none;
 }
 img.nav-logo {
-	min-width: 124px;
+	max-width: 80px;
 }
 .sign-in {
 	font-size: 13px;
