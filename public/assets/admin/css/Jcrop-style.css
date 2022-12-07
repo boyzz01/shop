@@ -18,7 +18,7 @@
 
 #preview {
   z-index: 11;
-  position: fixed;
+  position: absolute;
   top: 5% !important;
   left: 35% !important;
   display: none;
