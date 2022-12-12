@@ -431,22 +431,22 @@
                 class="fa fa-font"></i>{{ __('Font Option') }}</a>
     </li>
 
-    {{-- <li>
+    <li>
         <a href="#seoTools" class="accordion-toggle wave-effect" data-toggle="collapse" aria-expanded="false">
             <i class="fas fa-wrench"></i>{{ __('SEO Tools') }}
         </a>
         <ul class="collapse list-unstyled" id="seoTools" data-parent="#accordion">
             <li>
-                <a href="{{ route('admin-prod-popular',30) }}"><span>{{ __('Popular Products') }}</span></a>
+                <a href="{{ route('admin-prod-popular', 30) }}"><span>{{ __('Popular Products') }}</span></a>
             </li>
-            <li>
+            {{-- <li>
                 <a href="{{ route('admin-seotool-analytics') }}"><span>{{ __('Google Analytics') }}</span></a>
-            </li>
+            </li> --}}
             <li>
                 <a href="{{ route('admin-seotool-keywords') }}"><span>{{ __('Website Meta Keywords') }}</span></a>
             </li>
         </ul>
-    </li> --}}
+    </li>
 
     {{-- <li>
         <a href="{{ route('admin-staff-index') }}" class=" wave-effect"><i class="fas fa-user-secret"></i>{{ __('Manage Staffs') }}</a>

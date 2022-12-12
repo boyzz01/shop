@@ -310,6 +310,10 @@
                             <div class="text-general">{{ $ps->email }}</div>
                         @endif
                     </div>
+                    <div style="width: 100%; margin-top: 50px;">
+                        <iframe src="https://www.google.com/maps?q={{ $ps->street }}&output=embed" width="100%"
+                            height="200" frameborder="0" style="border:0"></iframe>
+                    </div>
                 </div>
                 <div class="footer-widget media-widget mb-5">
                     @foreach (DB::table('social_links')->where('user_id', 0)->where('status', 1)->get() as $link)
