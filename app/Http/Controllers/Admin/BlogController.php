@@ -112,6 +112,9 @@ class BlogController extends AdminBaseController
         // $rules = [
         //     'photo'      => 'mimes:jpeg,jpg,png,svg',
         // ];
+        $rules = [
+            'photo'      => 'mimes:jpeg,jpg,png,svg',
+        ];
 
         $validator = Validator::make($request->all(), $rules);
 
