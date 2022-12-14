@@ -133,7 +133,7 @@ class BlogController extends AdminBaseController
             }
             $input['photo'] = $name;
         }
-        return response()->json($request->file('photo'));
+
         if (!empty($request->meta_tag)) {
             $input['meta_tag'] = implode(',', $request->meta_tag);
         } else {
@@ -154,7 +154,7 @@ class BlogController extends AdminBaseController
 
         //--- Redirect Section
         $msg = __('Data Updated Successfully.') . '<a href="' . route("admin-blog-index") . '">' . __("View Post Lists") . '</a>';
-        // return response()->json($msg);
+        return response()->json($msg);
         //--- Redirect Section Ends
     }
 
