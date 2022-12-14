@@ -109,9 +109,9 @@ class BlogController extends AdminBaseController
     public function update(Request $request, $id)
     {
         //--- Validation Section
-        $rules = [
-            'photo'      => 'mimes:jpeg,jpg,png,svg',
-        ];
+        // $rules = [
+        //     'photo'      => 'mimes:jpeg,jpg,png,svg',
+        // ];
 
         $validator = Validator::make($request->all(), $rules);
 
