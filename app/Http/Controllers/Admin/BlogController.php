@@ -6,6 +6,7 @@ use App\{
     Models\Blog,
     Models\BlogCategory
 };
+use App\Helpers\PriceHelper;
 use Illuminate\Http\Request;
 use Validator;
 use Datatables;
@@ -71,8 +72,8 @@ class BlogController extends AdminBaseController
         $slug = Str::slug($request->title) . Str::random(4);
 
         if ($file = $request->file('photo')) {
-            $name = \PriceHelper::ImageCreateName($file);
-            $file->move(public_path('assets/images/blogs', $name));
+            $name = PriceHelper::ImageCreateName($file);
+            $file->move(public_path('assets/images/blogs'), $name);
             // $file->move('assets/images/blogs',$name);
             $input['photo'] = $name;
         }
@@ -109,12 +110,10 @@ class BlogController extends AdminBaseController
     public function update(Request $request, $id)
     {
         //--- Validation Section
-        // $rules = [
-        //     'photo'      => 'mimes:jpeg,jpg,png,svg',
-        // ];
         $rules = [
             'photo'      => 'mimes:jpeg,jpg,png,svg',
         ];
+      
 
         $validator = Validator::make($request->all(), $rules);
 
@@ -127,8 +126,8 @@ class BlogController extends AdminBaseController
         $data = Blog::findOrFail($id);
         $input = $request->all();
         if ($file = $request->file('photo')) {
-            $name = \PriceHelper::ImageCreateName($file);
-            $file->move(public_path('assets/images/blogs', $name));
+        $name = PriceHelper::ImageCreateName($file);
+            $file->move(public_path('assets/images/blogs'), $name);
             if ($data->photo != null) {
                 if (file_exists(public_path() . '/assets/images/blogs/' . $data->photo)) {
                     unlink(public_path() . '/assets/images/blogs/' . $data->photo);
@@ -136,7 +135,7 @@ class BlogController extends AdminBaseController
             }
             $input['photo'] = $name;
         }
-
+       
         if (!empty($request->meta_tag)) {
             $input['meta_tag'] = implode(',', $request->meta_tag);
         } else {

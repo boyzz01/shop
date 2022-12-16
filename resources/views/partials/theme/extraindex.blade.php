@@ -310,10 +310,10 @@
                             <div class="text-general">{{ $ps->email }}</div>
                         @endif
                     </div>
-                    <div style="width: 100%; margin-top: 50px;">
+                    {{-- <div style="width: 100%; margin-top: 50px;">
                         <iframe src="https://www.google.com/maps?q={{ $ps->street }}&output=embed" width="100%"
                             height="200" frameborder="0" style="border:0"></iframe>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="footer-widget media-widget mb-5">
                     @foreach (DB::table('social_links')->where('user_id', 0)->where('status', 1)->get() as $link)
@@ -324,9 +324,17 @@
                                     <path
                                         d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z" />
                                 </svg></a>
+                        @elseif ($link->nama == 'Youtube')
                         @else
                             <a href="{{ $link->link }}"><i class="{{ $link->icon }}"></i></a>
                         @endif
+                    @endforeach
+
+                    <br>
+                    <br>
+                    @foreach (DB::table('social_links')->where('user_id', 0)->where('nama', 'Youtube')->where('status', 1)->get() as $link)
+                        <iframe width="100%" height="200" src="{{ $link->link }}">
+                        </iframe>
                     @endforeach
                 </div>
             </div>
