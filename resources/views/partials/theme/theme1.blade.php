@@ -30,7 +30,8 @@
                                     <h2 class="title  slide-h5" style="color: {{ $data->title_color }}">
                                         {{ $data->title_text }}</h2>
 
-                                    <p class="slide-h5">{{ $data->details_text }}</p>
+                                    <p class="slide-h5" style="color: {{ $data->details_color }}">{{ $data->details_text }}
+                                    </p>
 
                                     <a href="{{ $data->link }}" class="cmn--btn ">{{ __('SHOP NOW') }}</a>
                                 </div>
