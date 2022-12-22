@@ -310,10 +310,7 @@
                             <div class="text-general">{{ $ps->email }}</div>
                         @endif
                     </div>
-                    {{-- <div style="width: 100%; margin-top: 50px;">
-                        <iframe src="https://www.google.com/maps?q={{ $ps->street }}&output=embed" width="100%"
-                            height="200" frameborder="0" style="border:0"></iframe>
-                    </div> --}}
+
                 </div>
                 <div class="footer-widget media-widget mb-5">
                     @foreach (DB::table('social_links')->where('user_id', 0)->where('status', 1)->get() as $link)
@@ -330,13 +327,10 @@
                         @endif
                     @endforeach
 
-                    <br>
-                    <br>
-                    @foreach (DB::table('social_links')->where('user_id', 0)->where('nama', 'Youtube')->where('status', 1)->get() as $link)
-                        <iframe width="100%" height="200" src="{{ $link->link }}">
-                        </iframe>
-                    @endforeach
+
+
                 </div>
+
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget category-widget mb-5">
@@ -364,6 +358,7 @@
 
                     </ul>
                 </div>
+
             </div>
             <div class="col-lg-3 col-md-6">
                 <div class="footer-widget widget-nav mb-5">
@@ -391,6 +386,27 @@
                             </li>
                         @endforeach
                     </ul>
+
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div style="width: 100%; margin-top: 20px;">
+                        @foreach (DB::table('social_links')->where('user_id', 0)->where('nama', 'Youtube')->where('status', 1)->get() as $link)
+                            <iframe width="100%" height="200" src="{{ $link->link }}">
+                            </iframe>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6">
+
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div style="width: 100%; margin-top: 20px;">
+                        <iframe src="https://www.google.com/maps?q={{ $ps->street }}&output=embed" width="100%"
+                            height="300" frameborder="0" style="border:0"></iframe>
+                    </div>
                 </div>
             </div>
         </div>
